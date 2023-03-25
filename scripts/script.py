@@ -30,6 +30,7 @@ async def parser():
 print('#Hello from python#')
 loop = asyncio.new_event_loop()
 parsed = loop.run_until_complete(parser())
+print(parsed)
 
 loop.close()
 
