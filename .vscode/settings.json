@@ -16,6 +16,7 @@
   ],
   "javascript.format.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.format.enable": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "workbench.colorCustomizations": {
