@@ -1,0 +1,27 @@
+{
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+  },
+  "editor.formatOnSave": false,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "javascript.format.enable": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.format.enable": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.colorCustomizations": {
+    "errorLens.errorBackground": "#fff0",
+    "errorLens.errorForeground": "#ff6464b0",
+    "errorLens.warningBackground": "#fff0",
+    "errorLens.warningForeground": "#fa973ab0"
+  },
+}
