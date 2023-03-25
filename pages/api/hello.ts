@@ -6,7 +6,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const python = spawn("python", ["scripts/script.py", "node.js", "python"]);
+  const python = spawn("python3", ["scripts/script.py", "node.js", "python"]);
 
   let dataToSend = "";
 
