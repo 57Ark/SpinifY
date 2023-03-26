@@ -3,5 +3,5 @@
     "enabled": true
   },
   "buildCommand": "pnpm next build",
-  "installCommand": "pnpm i & sudo apt-get install python3 & pip install beautifulsoup4 requests"
+  "installCommand": "pnpm i & pip install beautifulsoup4 requests"
 }
