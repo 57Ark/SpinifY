@@ -21,6 +21,7 @@ specifiers:
   framer-motion: ^7.10.3
   next: 13.2.3
   prettier: ^2.8.7
+  python-shell: ^5.0.0
   react: 18.2.0
   react-dom: 18.2.0
   typescript: 5.0.2
@@ -39,6 +40,7 @@ dependencies:
   framer-motion: 7.10.3_biqbaboplfbrettd7655fr4n2y
   next: 13.2.3_hrdbe576m4w26u2yfpqpvbxyky
   prettier: 2.8.7
+  python-shell: 5.0.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 5.0.2
@@ -3973,6 +3975,11 @@ packages:
   /punycode/2.3.0:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
+
+  /python-shell/5.0.0:
+    resolution: {integrity: sha512-RUOOOjHLhgR1MIQrCtnEqz/HJ1RMZBIN+REnpSUrfft2bXqXy69fwJASVziWExfFXsR1bCY0TznnHooNsCo0/w==}
+    engines: {node: '>=0.10'}
+    dev: false
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}

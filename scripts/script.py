@@ -20,7 +20,6 @@ async def parser():
   # print("page", page)
   playlists = html_soup.findAll('a', class_='d-link deco-link playlist__title-cover')
 
-  print(len(playlists))
   return len(playlists)
 
 
@@ -30,11 +29,9 @@ async def parser():
 print('#Hello from python#')
 loop = asyncio.new_event_loop()
 parsed = loop.run_until_complete(parser())
-print(parsed)
+print("We found", parsed, "playlists")
 
 loop.close()
 
-print('First param:'+sys.argv[1]+'#')
-print('Second param:'+sys.argv[2]+'#')
 
 sys.stdout.flush()
