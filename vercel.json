@@ -2,6 +2,6 @@
   "github": {
     "enabled": true
   },
-  "buildCommand": "vercel build",
+  "buildCommand": "pnpm build",
   "installCommand": "pnpm i & pip install beautifulsoup4 requests"
 }
