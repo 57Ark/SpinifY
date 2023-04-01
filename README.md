@@ -45,7 +45,7 @@ SpinifY is currently deployed using Vercel at https://spinify.vercel.app/. If yo
 
 ## Credits
 
-SpinifY was developed by [Your Name Here]. Special thanks to the developers of Next.js, React, and Python for their contributions to the open source community.
+SpinifY was developed by Ark57. Special thanks to the developers of Next.js, React, and Python for their contributions to the open source community.
 
 ## License
 
