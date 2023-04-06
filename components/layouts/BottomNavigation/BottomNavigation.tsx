@@ -1,12 +1,11 @@
 import { Box, HStack, Stack } from "@chakra-ui/react";
-import { useAtom } from "jotai";
 
 import Progress from "@/components/elements/Progress/Progress";
 import { useBackgroundColor } from "@/hooks/ui";
-import { stepAtom } from "@/store";
+import { useStepStore } from "@/store";
 
 export default function BottomNavigation() {
-  const [currentStep] = useAtom(stepAtom);
+  const currentStep = useStepStore((state) => state.currentStep);
 
   const background = useBackgroundColor();
 

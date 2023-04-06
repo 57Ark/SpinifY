@@ -6,14 +6,14 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
-import { useAtom } from "jotai";
 import { RocketLaunch } from "phosphor-react";
 
 import AnimationPresenceDisplay from "@/components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
-import { stepAtom } from "@/store";
+import { useStepStore } from "@/store";
 
 export default function Header() {
-  const [currentStep, setCurrentStep] = useAtom(stepAtom);
+  const currentStep = useStepStore((state) => state.currentStep);
+  const nextStep = useStepStore((state) => state.nextStep);
 
   return (
     <Stack spacing={{ base: "32px", md: "48px" }}>
@@ -57,7 +57,7 @@ export default function Header() {
         <HStack justify={"center"}>
           <Button
             leftIcon={<RocketLaunch size={20} weight="bold" />}
-            onClick={() => setCurrentStep(0)}
+            onClick={() => nextStep()}
             variant={"main"}
           >
             Let&apos;s start

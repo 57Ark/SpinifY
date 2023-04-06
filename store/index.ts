@@ -1,3 +1,11 @@
-import { atom } from "jotai";
+import { create } from "zustand";
 
-export const stepAtom = atom<number>(-1);
+type StepState = {
+  currentStep: number;
+  nextStep: () => void;
+};
+
+export const useStepStore = create<StepState>((set) => ({
+  currentStep: 0,
+  nextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
+}));

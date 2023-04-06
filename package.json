@@ -20,14 +20,14 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^7.10.3",
-    "jotai": "^1.13.1",
     "next": "^13.2.3",
     "phosphor-react": "^1.4.1",
     "prettier": "^2.8.7",
     "python-shell": "^5.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "webpack": "^5.76.3"
+    "webpack": "^5.76.3",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
