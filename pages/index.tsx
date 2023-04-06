@@ -1,13 +1,14 @@
 import { Box, Stack } from "@chakra-ui/react";
+import { useAtom } from "jotai";
 
 import AnimationPresenceDisplay from "@/components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
 import Progress from "@/components/elements/Progress/Progress";
 import Header from "@/components/modules/Header/Header";
 import Scraping from "@/components/modules/Scraping/Scraping";
-import { useStepStore } from "@/store";
+import { stepAtom } from "@/store";
 
 export default function Home() {
-  const currentStep = useStepStore((state) => state.currentStep);
+  const [currentStep] = useAtom(stepAtom);
 
   // добавить пометку, что плейлисты должны быть открыты
   return (
