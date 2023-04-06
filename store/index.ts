@@ -6,6 +6,6 @@ type StepState = {
 };
 
 export const useStepStore = create<StepState>((set) => ({
-  currentStep: 0,
+  currentStep: -1,
   nextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
 }));
