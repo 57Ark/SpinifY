@@ -9,6 +9,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -17,19 +18,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "baseUrl": ".",
+    "downlevelIteration": true,
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
+  "files": [
+    "utils.d.ts"
+  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "cypress"
   ]
 }

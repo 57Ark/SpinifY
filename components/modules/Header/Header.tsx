@@ -9,8 +9,8 @@ import {
 import { useAtom } from "jotai";
 import { RocketLaunch } from "phosphor-react";
 
-import AnimationPresenceDisplay from "@/components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
-import { stepAtom } from "@/utils/store";
+import AnimationPresenceDisplay from "../../../components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
+import { stepAtom } from "../../../utils/store";
 
 export default function Header() {
   const [currentStep, setCurrentStep] = useAtom(stepAtom);

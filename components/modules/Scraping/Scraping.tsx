@@ -1,7 +1,7 @@
 import { Button, HStack, Input, Stack, Text } from "@chakra-ui/react";
 import { useAtom } from "jotai";
 
-import { stepAtom } from "@/utils/store";
+import { stepAtom } from "../../../utils/store";
 
 export default function Scraping() {
   const [, setCurrentStep] = useAtom(stepAtom);
