@@ -1,36 +1,42 @@
-import { Button, Stack } from "@chakra-ui/react";
-import axios from "axios";
+import { Box, Stack } from "@chakra-ui/react";
+import { useAtom } from "jotai";
+
+import AnimationPresenceDisplay from "@/components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
+import Progress from "@/components/elements/Progress/Progress";
+import Header from "@/components/modules/Header/Header";
+import Scraping from "@/components/modules/Scraping/Scraping";
+import { stepAtom } from "@/store";
 
 export default function Home() {
-  const fc = async () => {
-    try {
-      const response = await axios.get(
-        "/api/getPlaylists?username=v4dimgorbatov"
-      );
-
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fc2 = async () => {
-    try {
-      const response = await axios.get(
-        "/api/getSongs?playlistId=3&username=v4dimgorbatov"
-      );
-
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [currentStep] = useAtom(stepAtom);
 
   // добавить пометку, что плейлисты должны быть открыты
   return (
-    <Stack>
-      <Button onClick={() => fc()}>Click me</Button>
-      <Button onClick={() => fc2()}>Or me</Button>
+    <Stack spacing={0}>
+      <Header />
+
+      <Box
+        display={{ base: "none", lg: "initial" }}
+        position={"relative"}
+        h="0"
+        left="-48px"
+        w="fit-content"
+      >
+        <AnimationPresenceDisplay presence={currentStep >= 0}>
+          <Box py={"48px"}>
+            <Progress length={3} currentStep={currentStep} direction="column" />
+          </Box>
+        </AnimationPresenceDisplay>
+      </Box>
+
+      <Stack
+        spacing={{ base: "32px", md: "48px" }}
+        py={{ base: "32px", md: "48px" }}
+      >
+        <AnimationPresenceDisplay presence={currentStep === 0}>
+          <Scraping />
+        </AnimationPresenceDisplay>
+      </Stack>
     </Stack>
   );
 }

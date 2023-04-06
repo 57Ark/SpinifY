@@ -1,7 +1,12 @@
+import "@fontsource/albert-sans/variable.css";
+import "@fontsource/sora/variable.css";
+import "@fontsource/prompt";
+
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
+import MainLayout from "@/components/layouts/MainLayout";
 import { theme } from "@/utils/theme";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -14,7 +19,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ChakraProvider cssVarsRoot="body" theme={theme}>
-        <Component {...pageProps} />
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
       </ChakraProvider>
     </>
   );
