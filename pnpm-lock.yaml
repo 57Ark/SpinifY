@@ -41,7 +41,7 @@ dependencies:
     specifier: ^1.13.1
     version: 1.13.1(@babel/core@7.21.3)(react@18.2.0)
   next:
-    specifier: 13.2.3
+    specifier: ^13.2.3
     version: 13.2.3(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)
   phosphor-react:
     specifier: ^1.4.1
