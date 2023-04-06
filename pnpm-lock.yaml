@@ -34,6 +34,9 @@ dependencies:
   framer-motion:
     specifier: ^7.10.3
     version: 7.10.3(react-dom@18.2.0)(react@18.2.0)
+  jotai:
+    specifier: 1.7.3
+    version: 1.7.3(@babel/core@7.21.3)(react@18.2.0)
   next:
     specifier: latest
     version: 13.2.4(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)
@@ -3633,6 +3636,44 @@ packages:
       '@types/node': 18.15.9
       merge-stream: 2.0.0
       supports-color: 8.1.1
+
+  /jotai@1.7.3(@babel/core@7.21.3)(react@18.2.0):
+    resolution: {integrity: sha512-7oyKS1cUlwO8bLvhrSrw3/G2tiprmUjt0eK19z4LMiyScsaeqnFwcr+3xaM6N8Ej6iGd0MmBlGhQsmJcnV6+Fw==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@babel/core': '*'
+      '@babel/template': '*'
+      '@urql/core': '*'
+      immer: '*'
+      optics-ts: '*'
+      react: '>=16.8'
+      react-query: '*'
+      valtio: '*'
+      wonka: '*'
+      xstate: '*'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
+      '@urql/core':
+        optional: true
+      immer:
+        optional: true
+      optics-ts:
+        optional: true
+      react-query:
+        optional: true
+      valtio:
+        optional: true
+      wonka:
+        optional: true
+      xstate:
+        optional: true
+    dependencies:
+      '@babel/core': 7.21.3
+      react: 18.2.0
+    dev: false
 
   /js-sdsl@4.4.0:
     resolution: {integrity: sha512-FfVSdx6pJ41Oa+CF7RDaFmTnCaFhua+SNYQX74riGOpl96x+2jQCqEfQ2bnXu/5DPCqlRuiqyvTJM0Qjz26IVg==}
