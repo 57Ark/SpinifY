@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 
 import Progress from "@/components/elements/Progress/Progress";
 import { useBackgroundColor } from "@/hooks/ui";
-import { stepAtom } from "@/store";
+import { stepAtom } from "@/utils/store";
 
 export default function BottomNavigation() {
   const [currentStep] = useAtom(stepAtom);

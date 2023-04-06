@@ -5,7 +5,7 @@ import AnimationPresenceDisplay from "@/components/elements/AnimationPresenceDis
 import Progress from "@/components/elements/Progress/Progress";
 import Header from "@/components/modules/Header/Header";
 import Scraping from "@/components/modules/Scraping/Scraping";
-import { stepAtom } from "@/store";
+import { stepAtom } from "@/utils/store";
 
 export default function Home() {
   const [currentStep] = useAtom(stepAtom);
