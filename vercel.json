@@ -2,7 +2,7 @@
   "github": {
     "enabled": true
   },
-  "buildCommand": "pnpm next build",
+  "buildCommand": "pnpm build",
   "installCommand": "pnpm i & pip install beautifulsoup4 requests"
   
 }
