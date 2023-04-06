@@ -16,9 +16,6 @@ dependencies:
   '@fontsource/albert-sans':
     specifier: ^4.5.2
     version: 4.5.2
-  '@fontsource/jetbrains-mono':
-    specifier: ^4.5.12
-    version: 4.5.12
   '@fontsource/prompt':
     specifier: ^4.5.10
     version: 4.5.10
@@ -41,8 +38,8 @@ dependencies:
     specifier: ^7.10.3
     version: 7.10.3(react-dom@18.2.0)(react@18.2.0)
   jotai:
-    specifier: ^2.0.3
-    version: 2.0.3(react@18.2.0)
+    specifier: ^1.13.1
+    version: 1.13.1(@babel/core@7.21.3)(react@18.2.0)
   next:
     specifier: 13.2.3
     version: 13.2.3(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)
@@ -1518,10 +1515,6 @@ packages:
 
   /@fontsource/albert-sans@4.5.2:
     resolution: {integrity: sha512-PPL1HC/wqPEPaFEa0QspcfchsGvzQDXGg4+1pt6aVI4812E2ElhGhHUDYD4v4S+E3gZa1/urPZ06uGeKAuNhkg==}
-    dev: false
-
-  /@fontsource/jetbrains-mono@4.5.12:
-    resolution: {integrity: sha512-LJF1ala1/u+wXZmESFqIk08FA9yGX4/uAAleCHmXUMgEjvNAYFHUQQ7eK5hQQoBOwh99cU5suTrqYqEkgzwzPA==}
     dev: false
 
   /@fontsource/prompt@4.5.10:
@@ -3669,15 +3662,47 @@ packages:
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
-  /jotai@2.0.3(react@18.2.0):
-    resolution: {integrity: sha512-MMjhSPAL3RoeZD9WbObufRT2quThEAEknHHridf2ma8Ml7ZVQmUiHk0ssdbR3F0h3kcwhYqSGJ59OjhPge7RRg==}
+  /jotai@1.13.1(@babel/core@7.21.3)(react@18.2.0):
+    resolution: {integrity: sha512-RUmH1S4vLsG3V6fbGlKzGJnLrDcC/HNb5gH2AeA9DzuJknoVxSGvvg8OBB7lke+gDc4oXmdVsaKn/xDUhWZ0vw==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
-      react: '>=17.0.0'
+      '@babel/core': '*'
+      '@babel/template': '*'
+      jotai-devtools: '*'
+      jotai-immer: '*'
+      jotai-optics: '*'
+      jotai-redux: '*'
+      jotai-tanstack-query: '*'
+      jotai-urql: '*'
+      jotai-valtio: '*'
+      jotai-xstate: '*'
+      jotai-zustand: '*'
+      react: '>=16.8'
     peerDependenciesMeta:
-      react:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
+      jotai-devtools:
+        optional: true
+      jotai-immer:
+        optional: true
+      jotai-optics:
+        optional: true
+      jotai-redux:
+        optional: true
+      jotai-tanstack-query:
+        optional: true
+      jotai-urql:
+        optional: true
+      jotai-valtio:
+        optional: true
+      jotai-xstate:
+        optional: true
+      jotai-zustand:
         optional: true
     dependencies:
+      '@babel/core': 7.21.3
       react: 18.2.0
     dev: false
 
