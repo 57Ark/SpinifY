@@ -3,6 +3,5 @@
     "enabled": true
   },
   "buildCommand": "pnpm build",
-  "installCommand": "pnpm i & pip install beautifulsoup4 requests"
-  
+  "installCommand": "pnpm i"
 }
