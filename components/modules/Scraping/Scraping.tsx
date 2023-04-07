@@ -1,4 +1,5 @@
 import { Button, HStack, Input, Stack, Text } from "@chakra-ui/react";
+import axios from "axios";
 import { useAtom } from "jotai";
 import { useState } from "react";
 
@@ -9,20 +10,20 @@ export default function Scraping() {
 
   const [isIdInput, setIsIdInput] = useState<boolean>(true);
 
-  // const fc = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "/api/getPlaylists?username=v4dimgorbatov"
-  //     );
-  //     // arkhip.voubd
-  //     // nika.chekina
-  //     // v4dimgorbatov
+  const fc = async () => {
+    try {
+      const response = await axios.get(
+        "/api/getPlaylists?username=v4dimgorbatov"
+      );
+      // arkhip.voubd
+      // nika.chekina
+      // v4dimgorbatov
 
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // const fc2 = async () => {
   //   try {
@@ -50,7 +51,9 @@ export default function Scraping() {
 
           <Button
             variant={"additional"}
-            onClick={() => setIsIdInput(!isIdInput)}
+            onClick={() => {
+              setIsIdInput(!isIdInput), fc();
+            }}
           >
             {isIdInput ? "Can't find my ID" : "Or input ID"}
           </Button>

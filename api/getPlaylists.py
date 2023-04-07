@@ -74,14 +74,14 @@ class handler(BaseHTTPRequestHandler):
 
           self.send_response(200)
           self.send_header("Content-type", "application/json")
-          self.setHeader("Cache-Control", "max-age=1, stale-while-revalidate=86400")
+          self.send_header("Cache-Control", "max-age=1, stale-while-revalidate=86400")
           self.end_headers()
           self.wfile.write(json.dumps({'data': playlists}).encode())
 
         else: 
           self.send_response(400)
           self.send_header("Content-type", "application/json")
-          self.setHeader("Cache-Control", "max-age=1, stale-while-revalidate=86400")
+          self.send_header("Cache-Control", "max-age=1, stale-while-revalidate=86400")
           self.end_headers()  
           self.wfile.write(json.dumps({'message': "Invalid params"}).encode())
 
