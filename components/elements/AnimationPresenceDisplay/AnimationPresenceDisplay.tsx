@@ -3,7 +3,7 @@ import { PropsWithChildren } from "react";
 
 const variants = {
   initial: {
-    y: "100px",
+    y: 100,
     opacity: 0,
     zIndex: 0,
     transition: {
@@ -13,7 +13,7 @@ const variants = {
   },
   animate: { y: 0, opacity: 1, zIndex: 1 },
   exit: {
-    y: "-100px",
+    y: -100,
     opacity: 0,
     zIndex: 0,
     transition: {
