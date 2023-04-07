@@ -1,12 +1,7 @@
 import { Button, HStack, Input, Stack, Text } from "@chakra-ui/react";
-import { useAtom } from "jotai";
 import { useState } from "react";
 
-import { stepAtom } from "../../../utils/store";
-
 export default function Scraping() {
-  const [, setCurrentStep] = useAtom(stepAtom);
-
   const [isIdInput, setIsIdInput] = useState<boolean>(true);
 
   // const fc = async () => {
@@ -59,9 +54,7 @@ export default function Scraping() {
 
       <HStack justify={"center"}>
         {/* TODO: добавить обработку случаев (внутри апи), когда неправильный юзер, или закрытый аккаунт */}
-        <Button onClick={() => setCurrentStep(1)} variant={"main"}>
-          Find playlists
-        </Button>
+        <Button variant={"main"}>Find playlists</Button>
       </HStack>
     </Stack>
   );
