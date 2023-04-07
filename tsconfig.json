@@ -27,11 +27,7 @@
     "**/*.ts",
     "**/*.tsx"
   ],
-  "files": [
-    "utils.d.ts"
-  ],
   "exclude": [
     "node_modules",
-    "cypress"
   ]
 }
