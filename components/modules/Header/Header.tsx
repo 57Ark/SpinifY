@@ -35,19 +35,16 @@ export default function Header() {
           <Text variant={"subtitle"}>What should I do?</Text>
           <UnorderedList pl={"16px"}>
             <ListItem>
-              <Text>DAO creation</Text>
+              <Text>Provide your Yandex account id</Text>
             </ListItem>
             <ListItem>
-              <Text>Unlimited on-chain voting</Text>
+              <Text>Select playlist you want to transfer</Text>
             </ListItem>
             <ListItem>
-              <Text>Unlimited off-chain proposals</Text>
+              <Text>Provide your Spotify account id</Text>
             </ListItem>
             <ListItem>
-              <Text>Basic functionality</Text>
-            </ListItem>
-            <ListItem>
-              <Text>Up to 5 members</Text>
+              <Text>Sit and relax</Text>
             </ListItem>
           </UnorderedList>
         </Stack>

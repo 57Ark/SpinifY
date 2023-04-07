@@ -1,16 +1,8 @@
-import {
-  Box,
-  Button,
-  HStack,
-  Input,
-  Link,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Button, HStack, Input, Link, Stack, Text } from "@chakra-ui/react";
 import AnimationPresenceDisplay from "components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
 import { useHelperIconColor, useTextColor, useTextGrayColor } from "hooks/ui";
 import { useAtom } from "jotai";
-import { Confetti, Info } from "phosphor-react";
+import { Confetti } from "phosphor-react";
 import { useMemo, useState } from "react";
 
 import { stepAtom } from "../../../utils/store";
