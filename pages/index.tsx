@@ -1,4 +1,5 @@
 import { Box, Stack } from "@chakra-ui/react";
+import { useAtom } from "jotai";
 
 import AnimationPresenceDisplay from "../components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
 import Progress from "../components/elements/Progress/Progress";
@@ -7,6 +8,8 @@ import Scraping from "../components/modules/Scraping/Scraping";
 import { stepAtom } from "../utils/store";
 
 export default function Home() {
+  const [currentStep] = useAtom(stepAtom);
+
   // добавить пометку, что плейлисты должны быть открыты
   return (
     <Stack spacing={0}>
@@ -19,9 +22,9 @@ export default function Home() {
         left="-48px"
         w="fit-content"
       >
-        <AnimationPresenceDisplay presence={false}>
+        <AnimationPresenceDisplay presence={currentStep >= 0}>
           <Box py={"48px"}>
-            <Progress length={3} currentStep={1} direction="column" />
+            <Progress length={3} currentStep={currentStep} direction="column" />
           </Box>
         </AnimationPresenceDisplay>
       </Box>
@@ -30,7 +33,7 @@ export default function Home() {
         spacing={{ base: "32px", md: "48px" }}
         py={{ base: "32px", md: "48px" }}
       >
-        <AnimationPresenceDisplay presence={false}>
+        <AnimationPresenceDisplay presence={currentStep === 0}>
           <Scraping />
         </AnimationPresenceDisplay>
       </Stack>
