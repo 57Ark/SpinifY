@@ -5,15 +5,16 @@ import {
   ThemeConfig,
 } from "@chakra-ui/react";
 
-import { buttonTheme } from "./buttonProps";
-import { inputTheme } from "./inputProps";
+import { buttonTheme } from "./ui/buttonProps";
+import { formErrorMessageTheme } from "./ui/formErrorMessageProps";
+import { inputTheme } from "./ui/inputProps";
 import {
   defaultTextProps,
   noteProps,
   pageHeadingProps,
   subtitleProps,
   titleProps,
-} from "./textProps";
+} from "./ui/textProps";
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -50,6 +51,7 @@ const theme = extendTheme({
     }),
   },
   components: {
+    FormError: formErrorMessageTheme,
     Input: inputTheme,
     Button: buttonTheme,
     Text: {

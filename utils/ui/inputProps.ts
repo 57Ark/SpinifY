@@ -17,6 +17,13 @@ export const inputFieldBaseProps = {
 
   _hover: {
     borderColor: "#737373",
+    _disabled: {
+      opacity: 1,
+      borderColor: "#F5F5F5",
+      background: "#F5F5F5",
+      textColor: "#A3A3A3",
+      fontWeight: "semibold",
+    },
   },
   _focus: {
     zIndex: 1,
@@ -26,13 +33,12 @@ export const inputFieldBaseProps = {
     borderColor: "#FF5B5B",
   },
 
-  // todo
   _disabled: {
     opacity: 1,
-    borderColor: "#F3F3F3",
-    background: "#F3F3F3",
-    textColor: "#818181",
-    fontWeight: "bold",
+    borderColor: "#F5F5F5",
+    background: "#F5F5F5",
+    textColor: "#A3A3A3",
+    fontWeight: "semibold",
   },
 
   _dark: {
@@ -42,6 +48,13 @@ export const inputFieldBaseProps = {
 
     _hover: {
       borderColor: "#737373",
+      _disabled: {
+        opacity: 1,
+        borderColor: "#262626",
+        background: "#262626",
+        textColor: "#525252",
+        fontWeight: "semibold",
+      },
     },
     _focus: {
       zIndex: 1,
@@ -51,13 +64,12 @@ export const inputFieldBaseProps = {
       borderColor: "#FF5F5F",
     },
 
-    // todo
     _disabled: {
       opacity: 1,
-      borderColor: "#1F1F1F",
-      background: "#1F1F1F",
-      textColor: "#818181",
-      fontWeight: "bold",
+      borderColor: "#262626",
+      background: "#262626",
+      textColor: "#525252",
+      fontWeight: "semibold",
     },
   },
 };
