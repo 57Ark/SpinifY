@@ -53,7 +53,7 @@ export default function Header() {
       <AnimationPresenceDisplay presence={currentStep === -1}>
         <HStack justify={"center"}>
           <Button
-            leftIcon={<RocketLaunch size={20} weight="bold" />}
+            rightIcon={<RocketLaunch size={20} weight="bold" />}
             onClick={() => setCurrentStep(0)}
             variant={"main"}
           >

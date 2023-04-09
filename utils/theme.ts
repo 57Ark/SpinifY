@@ -6,6 +6,7 @@ import {
 } from "@chakra-ui/react";
 
 import { buttonTheme } from "./ui/buttonProps";
+import { checkboxTheme } from "./ui/checkboxProps";
 import { formErrorMessageTheme } from "./ui/formErrorMessageProps";
 import { inputTheme } from "./ui/inputProps";
 import {
@@ -54,6 +55,7 @@ const theme = extendTheme({
     FormError: formErrorMessageTheme,
     Input: inputTheme,
     Button: buttonTheme,
+    Checkbox: checkboxTheme,
     Text: {
       defaultProps: {
         variant: "default",

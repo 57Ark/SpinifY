@@ -13,14 +13,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import AnimationPresenceDisplay from "components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
 import { useHelperIconColor, useTextColor, useTextGrayColor } from "hooks/ui";
 import { useAtom } from "jotai";
-import { Confetti } from "phosphor-react";
+import { CaretRight, Share } from "phosphor-react";
 import { useCallback, useMemo } from "react";
 import { Controller, FormProvider, useForm } from "react-hook-form";
 import { object, string } from "yup";
 
 import { stepAtom, userIdAtom } from "../../../utils/store";
 
-export interface ScrapingFromProps {
+interface YandexIdFormProps {
   link: string;
   userId: string;
   isIdInput: boolean;
@@ -57,7 +57,7 @@ const validationSchema = object({
   }),
 });
 
-export default function Scraping() {
+export default function YandexIdForm() {
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
   const [, setUserId] = useAtom(userIdAtom);
 
@@ -65,7 +65,7 @@ export default function Scraping() {
   const textColor = useTextColor();
   const iconColor = useHelperIconColor();
 
-  const rhfMethods = useForm<ScrapingFromProps>({
+  const rhfMethods = useForm<YandexIdFormProps>({
     defaultValues: {
       isIdInput: true,
       link: "",
@@ -74,9 +74,10 @@ export default function Scraping() {
     mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
+
   const {
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     watch,
     control,
     setValue,
@@ -85,14 +86,12 @@ export default function Scraping() {
   const wacthedValues = watch();
 
   const findPlaylists = useCallback(
-    (formData: ScrapingFromProps) => {
+    (formData: YandexIdFormProps) => {
       if (formData.isIdInput) {
         setUserId(formData.userId);
-        console.log(formData.userId);
       } else {
         const userId = formData.link.split("users")[1].split("/")[1];
         setUserId(userId);
-        console.log(userId);
       }
       setCurrentStep(1);
     },
@@ -104,16 +103,18 @@ export default function Scraping() {
       <AnimationPresenceDisplay presence={currentStep === 0}>
         <HStack justify={"center"}>
           <Button
+            isDisabled={!isValid}
             onClick={handleSubmit(findPlaylists)}
             type="submit"
             variant={"main"}
+            rightIcon={<CaretRight size={16} weight="bold" />}
           >
             Find playlists
           </Button>
         </HStack>
       </AnimationPresenceDisplay>
     ),
-    [currentStep, findPlaylists, handleSubmit]
+    [currentStep, findPlaylists, handleSubmit, isValid]
   );
 
   return (
@@ -132,7 +133,7 @@ export default function Scraping() {
                     textColor: textColor,
                   }}
                 >
-                  <Confetti size={14} weight="fill" color={iconColor} />
+                  <Share size={14} weight="bold" color={iconColor} />
                   <Text variant={"note"} lineHeight={"80%"}>
                     What is Yandex ID?
                   </Text>

@@ -27,6 +27,7 @@ def getPlaylistInfo(playlist):
 
 
 def getYandexPlaylists(username):
+  # return []
   return [{'srcList': ['/blocks/playlist-cover/playlist-cover_like.png'], 'title': 'Мне нравится', 'link': '/users/v4dimgorbatov/playlists/3'}, {'srcList': ['//avatars.yandex.net/get-music-content/63210/c633ab03.a.1432493-1/100x100', '//avatars.yandex.net/get-music-content/6255016/4bf3d071.a.23147968-1/100x100', '//avatars.yandex.net/get-music-content/49876/7e9b8866.a.503984-1/100x100', '//avatars.yandex.net/get-music-content/49876/bd1e3f1a.a.2743861-1/100x100'], 'title': 'Веселый', 'link': '/users/v4dimgorbatov/playlists/1000'}, {'srcList': ['//avatars.yandex.net/get-music-content/49876/a9c29870.p.4481/200x200'], 'title': 'Лучшее: The Who', 'link': '/users/yamusic-bestsongs/playlists/4481'}]
 
   url = "https://music.yandex.ru/users/" + username + "/playlists"

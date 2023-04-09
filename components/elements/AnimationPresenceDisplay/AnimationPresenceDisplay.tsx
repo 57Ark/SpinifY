@@ -17,7 +17,7 @@ const variants = {
     opacity: 0,
     zIndex: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       type: "spring",
     },
   },
