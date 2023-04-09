@@ -16,8 +16,6 @@ export default function SelectableCard({
   const background = useColorModeValue("#F5F5F5", "#262626");
   const borderColor = useColorModeValue("#737373", "#262626");
 
-  // TODO: isDisabled
-
   return (
     <Box
       borderRadius="10px"
@@ -32,9 +30,7 @@ export default function SelectableCard({
         isDisabled
           ? _hover
           : {
-              filter: "drop-shadow(0 0 4px #6366F1)",
-              msFilter: "drop-shadow(0 0 4px #6366F1)",
-              WebkitFilter: "drop-shadow(0 0 4px #6366F1)",
+              boxShadow: isSelected ? undefined : "0 0 6px #6366F1",
               ..._hover,
             }
       }
@@ -42,18 +38,14 @@ export default function SelectableCard({
         isDisabled
           ? _active
           : {
-              filter: "drop-shadow(0 0 2px #6366F1)",
-              msFilter: "drop-shadow(0 0 2px #6366F1)",
-              WebkitFilter: "drop-shadow(0 0 2px #6366F1)",
+              boxShadow: "0 0 4px #6366F1",
               ..._active,
             }
       }
       style={
         isSelected
           ? {
-              filter: "drop-shadow(0 0 2px #6366F1)",
-              msFilter: "drop-shadow(0 0 2px #6366F1)",
-              WebkitFilter: "drop-shadow(0 0 2px #6366F1)",
+              boxShadow: "0 0 4px #6366F1",
               ...style,
             }
           : style

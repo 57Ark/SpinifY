@@ -129,13 +129,12 @@ export default function PlaylistCard({
               style={
                 currentStep === 1 && isHover
                   ? {
-                      filter: "drop-shadow(0 0 2px #6366F1)",
-                      msFilter: "drop-shadow(0 0 2px #6366F1)",
-                      WebkitFilter: "drop-shadow(0 0 2px #6366F1)",
+                      boxShadow: "0 0 4px #6366F1",
                     }
                   : undefined
               }
               h={{ base: "14px", md: "16px" }}
+              borderRadius={"2px"}
             >
               <Checkbox
                 colorScheme="black"
