@@ -1,6 +1,6 @@
 import "@fontsource/albert-sans/variable.css";
-import "@fontsource/sora/variable.css";
 import "@fontsource/prompt";
+import "@fontsource/sora/variable.css";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

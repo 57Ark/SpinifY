@@ -1,7 +1,7 @@
 {
-  "github": {
-    "enabled": true
-  },
-  "buildCommand": "pnpm build",
-  "installCommand": "pnpm i"
+	"github": {
+		"enabled": true
+	},
+	"buildCommand": "pnpm build",
+	"installCommand": "pnpm i"
 }

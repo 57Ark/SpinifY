@@ -102,13 +102,13 @@ export default function PlaylistCard({
 
   return (
     <motion.div
-      onHoverStart={() => setIsHover(currentStep === 1 && true)}
+      onHoverStart={() => setIsHover(currentStep === 2 && true)}
       onHoverEnd={() => setIsHover(false)}
     >
       <SelectableCard
         isSelected={isSelected}
         w="fit-content"
-        isDisabled={currentStep !== 1}
+        isDisabled={currentStep !== 2}
         onClick={() =>
           update(index, {
             isSelected: !isSelected,
@@ -127,7 +127,7 @@ export default function PlaylistCard({
           >
             <Box
               style={
-                currentStep === 1 && isHover
+                currentStep === 2 && isHover
                   ? {
                       boxShadow: "0 0 4px #6366F1",
                     }
@@ -140,7 +140,7 @@ export default function PlaylistCard({
                 colorScheme="black"
                 size={{ base: "sm", md: "md" }}
                 isChecked={isSelected}
-                isDisabled={currentStep !== 1}
+                isDisabled={currentStep !== 2}
               />
             </Box>
             <Text isTruncated>{playListInfo.title}</Text>

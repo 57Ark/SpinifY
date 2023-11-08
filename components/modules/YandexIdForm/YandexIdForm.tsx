@@ -13,12 +13,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import AnimationPresenceDisplay from "components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
 import { useHelperIconColor, useTextColor, useTextGrayColor } from "hooks/ui";
 import { useAtom } from "jotai";
+import { useRouter } from "next/router";
 import { CaretRight, Share } from "phosphor-react";
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { Controller, FormProvider, useForm } from "react-hook-form";
+import { isString } from "utils/typeGuards";
 import { object, string } from "yup";
 
-import { stepAtom, userIdAtom } from "../../../utils/store";
+import { spotifyTokenAtom, stepAtom, userIdAtom } from "../../../utils/store";
 
 interface YandexIdFormProps {
   link: string;
@@ -58,8 +60,11 @@ const validationSchema = object({
 });
 
 export default function YandexIdForm() {
+  const router = useRouter();
+
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
   const [, setUserId] = useAtom(userIdAtom);
+  const [spotifyToken] = useAtom(spotifyTokenAtom);
 
   const grayColor = useTextGrayColor();
   const textColor = useTextColor();
@@ -74,6 +79,14 @@ export default function YandexIdForm() {
     mode: "onChange",
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    (async () => {
+      if (!spotifyToken && isString(router.query.code)) {
+        router.push("/");
+      }
+    })();
+  }, [spotifyToken, router]);
 
   const {
     handleSubmit,
@@ -93,14 +106,14 @@ export default function YandexIdForm() {
         const userId = formData.link.split("users")[1].split("/")[1];
         setUserId(userId);
       }
-      setCurrentStep(1);
+      setCurrentStep(2);
     },
     [setCurrentStep, setUserId]
   );
 
   const MainAction = useMemo(
     () => (
-      <AnimationPresenceDisplay presence={currentStep === 0}>
+      <AnimationPresenceDisplay presence={currentStep === 1}>
         <HStack justify={"center"}>
           <Button
             isDisabled={!isValid}
@@ -148,14 +161,15 @@ export default function YandexIdForm() {
                   render={({ field }) => (
                     <Input
                       {...field}
+                      name="yandexUserId"
                       placeholder="username"
                       maxW="480px"
-                      isDisabled={currentStep !== 0}
+                      isDisabled={currentStep !== 1}
                     />
                   )}
                 />
 
-                <AnimationPresenceDisplay presence={currentStep === 0}>
+                <AnimationPresenceDisplay presence={currentStep === 1}>
                   <Button
                     variant={"additional"}
                     onClick={() => setValue("isIdInput", false)}
@@ -193,12 +207,12 @@ export default function YandexIdForm() {
                       {...field}
                       placeholder="https://music.yandex.ru/users/..."
                       maxW="480px"
-                      isDisabled={currentStep !== 0}
+                      isDisabled={currentStep !== 1}
                     />
                   )}
                 />
 
-                <AnimationPresenceDisplay presence={currentStep === 0}>
+                <AnimationPresenceDisplay presence={currentStep === 1}>
                   <Button
                     variant={"additional"}
                     onClick={() => setValue("isIdInput", true)}

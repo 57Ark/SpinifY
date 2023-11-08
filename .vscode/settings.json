@@ -25,4 +25,5 @@
     "errorLens.warningBackground": "#fff0",
     "errorLens.warningForeground": "#fa973ab0"
   },
+  "typescript.tsdk": "node_modules\\typescript\\lib",
 }

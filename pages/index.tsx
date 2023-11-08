@@ -1,7 +1,9 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Button, HStack, Stack } from "@chakra-ui/react";
 import PlaylistsSelector from "components/modules/PlaylistsSelector/PlaylistsSelector";
 import { useAtom } from "jotai";
 
+import SpotifyLogin from "components/modules/SpotifyLogin/SpotifyLogin";
+import { Repeat } from "phosphor-react";
 import AnimationPresenceDisplay from "../components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
 import Progress from "../components/elements/Progress/Progress";
 import Header from "../components/modules/Header/Header";
@@ -13,7 +15,7 @@ import { stepAtom } from "../utils/store";
 // v4dimgorbatov
 
 export default function Home() {
-  const [currentStep] = useAtom(stepAtom);
+  const [currentStep, setCurrentStep] = useAtom(stepAtom);
 
   return (
     <Stack spacing={0}>
@@ -44,10 +46,26 @@ export default function Home() {
         py={{ base: "32px", md: "48px" }}
       >
         <AnimationPresenceDisplay presence={currentStep >= 0}>
-          <YandexIdForm />
+          <SpotifyLogin />
         </AnimationPresenceDisplay>
         <AnimationPresenceDisplay presence={currentStep >= 1}>
+          <YandexIdForm />
+        </AnimationPresenceDisplay>
+        <AnimationPresenceDisplay presence={currentStep >= 2}>
           <PlaylistsSelector />
+        </AnimationPresenceDisplay>
+
+        <AnimationPresenceDisplay presence={currentStep >= 3}>
+          <HStack w="full" justify={"center"}>
+            <Button
+              onClick={() => setCurrentStep(1)}
+              type="submit"
+              variant={"main"}
+              rightIcon={<Repeat size={16} weight="bold" />}
+            >
+              Start over
+            </Button>
+          </HStack>
         </AnimationPresenceDisplay>
       </Stack>
     </Stack>

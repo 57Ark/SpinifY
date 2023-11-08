@@ -21,11 +21,11 @@ import {
 } from "hooks/ui";
 import { useAtom } from "jotai";
 import { CaretLeft, CaretRight, Confetti, MaskSad } from "phosphor-react";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { FormProvider, useFieldArray, useForm } from "react-hook-form";
 import { array, boolean, object } from "yup";
 
-import { playlistIdListAtom, stepAtom, userIdAtom } from "../../../utils/store";
+import { spotifyTokenAtom, stepAtom, userIdAtom } from "../../../utils/store";
 import PlaylistCard from "./PlaylistCard";
 import {
   GetPlaylistsResponse,
@@ -51,7 +51,10 @@ const validationSchema = object({
 export default function PlaylistsSelector() {
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
   const [userId] = useAtom(userIdAtom);
-  const [, setPlaylistIdList] = useAtom(playlistIdListAtom);
+
+  const [spotifyToken] = useAtom(spotifyTokenAtom);
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const grayColor = useTextGrayColor();
   const iconColor = useHelperIconColor();
@@ -63,8 +66,7 @@ export default function PlaylistsSelector() {
     queryFn: () =>
       axios.get<GetPlaylistsResponse>(`/api/getPlaylists?username=${userId}`),
     select: (data) => data.data.data,
-    // staleTime: 259200000,
-    staleTime: 0,
+    staleTime: 259200000,
   });
 
   const rhfMethods = useForm<PlaylistsSelectorFormValues>({
@@ -91,8 +93,6 @@ export default function PlaylistsSelector() {
   useEffect(() => {
     if (userPlaylists && userPlaylists.length > 0 && fields.length === 0) {
       userPlaylists.forEach((_, index) => {
-        console.log(index);
-
         if (index === 0) {
           append({ isSelected: true });
         } else {
@@ -102,48 +102,87 @@ export default function PlaylistsSelector() {
     }
   }, [append, fields.length, userPlaylists]);
 
-  const collectPlaylists = useCallback(() => {
-    if (userPlaylists) {
-      const idList = userPlaylists
-        .map(({ link }) => {
-          try {
-            return link.split("/playlists/")[0];
-          } catch {
-            return undefined;
-          }
-        })
-        .filter((_, index) => fields[index].isSelected)
-        .filter((id) => id !== undefined) as string[];
+  const collectPlaylists = useCallback(
+    async (formData: PlaylistsSelectorFormValues) => {
+      setIsLoading(true);
+      const selectedPlaylists = userPlaylists?.filter(
+        (_, index) => formData.playlists[index].isSelected
+      );
 
-      setPlaylistIdList(idList);
-      setCurrentStep(2);
-    }
-  }, [fields, setCurrentStep, setPlaylistIdList, userPlaylists]);
+      if (selectedPlaylists && selectedPlaylists.length > 0) {
+        const { data: profile } = await axios.get<{ id: string }>(
+          "https://api.spotify.com/v1/me",
+          {
+            headers: {
+              Authorization: `Bearer ${spotifyToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const songs = await Promise.all(
+          selectedPlaylists.map((playlist) =>
+            axios.get(
+              `/api/getSongs?username=${userId}&playlistId=${
+                playlist.link.split("/playlists/")[1]
+              }`
+            )
+          )
+        );
+
+        await Promise.all(
+          selectedPlaylists.map((playlist, index) =>
+            axios.post<{ id: string }>("/api/createPlaylist", {
+              userId: profile.id,
+              title: playlist.title,
+              songs: songs[index].data,
+              accessToken: spotifyToken,
+            })
+          )
+        );
+
+        setIsLoading(false);
+        setCurrentStep(3);
+      }
+    },
+    [spotifyToken, setCurrentStep, userPlaylists, userId]
+  );
 
   const MainAction = useMemo(() => {
     const MainButton =
       (userPlaylists && userPlaylists.length === 0) || isError ? (
         <Button
-          onClick={() => setCurrentStep(0)}
+          onClick={() => setCurrentStep(1)}
           variant={"additional"}
           leftIcon={<CaretLeft size={16} weight="bold" />}
         >
           Go back
         </Button>
       ) : (
-        <Button
-          isDisabled={userPlaylists === undefined || !isValid}
-          onClick={handleSubmit(collectPlaylists)}
-          type="submit"
-          variant={"main"}
-          rightIcon={<CaretRight size={16} weight="bold" />}
-        >
-          Transfer playlists
-        </Button>
+        <HStack>
+          <Button
+            onClick={() => setCurrentStep(1)}
+            variant={"additional"}
+            leftIcon={<CaretLeft size={16} weight="bold" />}
+          >
+            Go back
+          </Button>
+
+          <Button
+            isDisabled={userPlaylists === undefined || !isValid}
+            onClick={handleSubmit(collectPlaylists)}
+            type="submit"
+            variant={"main"}
+            rightIcon={<CaretRight size={16} weight="bold" />}
+            isLoading={isLoading}
+          >
+            Transfer playlists
+          </Button>
+        </HStack>
       );
 
     return (
-      <AnimationPresenceDisplay presence={currentStep <= 1}>
+      <AnimationPresenceDisplay presence={currentStep <= 2}>
         <HStack justify={"center"}>{MainButton}</HStack>
       </AnimationPresenceDisplay>
     );
@@ -155,7 +194,10 @@ export default function PlaylistsSelector() {
     isValid,
     setCurrentStep,
     userPlaylists,
+    isLoading,
   ]);
+
+  // TODO: select all
 
   return (
     <Stack spacing={{ base: "32px", md: "48px" }}>
@@ -214,6 +256,14 @@ export default function PlaylistsSelector() {
       </Stack>
 
       {MainAction}
+
+      {currentStep >= 3 && (
+        <Text variant={"title"}>{`Transfered ${
+          fields.filter((field) => field.isSelected).length
+        } playlist${
+          fields.filter((field) => field.isSelected).length > 1 ? "s" : ""
+        }!`}</Text>
+      )}
     </Stack>
   );
 }

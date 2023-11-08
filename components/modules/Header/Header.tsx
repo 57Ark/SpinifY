@@ -7,13 +7,24 @@ import {
   UnorderedList,
 } from "@chakra-ui/react";
 import { useAtom } from "jotai";
+import { useRouter } from "next/router";
 import { RocketLaunch } from "phosphor-react";
+import { useEffect } from "react";
+import { isString } from "utils/typeGuards";
 
 import AnimationPresenceDisplay from "../../../components/elements/AnimationPresenceDisplay/AnimationPresenceDisplay";
 import { stepAtom } from "../../../utils/store";
 
 export default function Header() {
+  const router = useRouter();
+
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
+
+  useEffect(() => {
+    if (isString(router.query.code)) {
+      setCurrentStep(0);
+    }
+  }, [router.query.code, setCurrentStep]);
 
   return (
     <Stack spacing={{ base: "32px", md: "48px" }}>
