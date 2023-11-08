@@ -32,8 +32,7 @@ def getYandexPlaylists(username):
   dotenv_path = Path('../.env')
   load_dotenv(dotenv_path=dotenv_path)
 
-  print(os.getenv('BROWSERLESS_API_KEY'))
-  
+
   chrome_options = webdriver.ChromeOptions()
   chrome_options.set_capability('browserless:token', os.getenv('BROWSERLESS_API_KEY'))
   chrome_options.add_argument("--no-sandbox")
@@ -53,7 +52,6 @@ def getYandexPlaylists(username):
     driver.quit()
 
     playlists = soup.findAll('div', class_='playlist playlist_selectable')
-    print(playlists_info)
     playlists_info = list(map(getPlaylistInfo,  playlists))
 
     return playlists_info
@@ -67,7 +65,6 @@ def getYandexPlaylists(username):
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         query = dict(parse.parse_qsl(parse.urlsplit(self.path).query))
-        print("I am in")
         if ("username" in query):
 
 

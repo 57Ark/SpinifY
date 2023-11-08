@@ -82,7 +82,6 @@ def getSongs(username, playlistId):
 
     driver.quit()
 
-    print(songs_count)
     return list(song_list)
 
   except Exception as error:
