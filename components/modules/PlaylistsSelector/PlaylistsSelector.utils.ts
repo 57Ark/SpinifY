@@ -4,6 +4,10 @@ export interface YandexPlaylist {
   link: string;
 }
 
+export interface GetPlaylistsResponse {
+  data: YandexPlaylist[];
+}
+
 export interface PlaylistsSelectorFormValues {
   playlists: {
     isSelected: boolean;

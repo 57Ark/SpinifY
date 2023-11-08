@@ -28,8 +28,8 @@ import { array, boolean, object } from "yup";
 import { spotifyTokenAtom, stepAtom, userIdAtom } from "../../../utils/store";
 import PlaylistCard from "./PlaylistCard";
 import {
+  GetPlaylistsResponse,
   PlaylistsSelectorFormValues,
-  YandexPlaylist,
 } from "./PlaylistsSelector.utils";
 
 const formSchema = {
@@ -64,8 +64,8 @@ export default function PlaylistsSelector() {
     enabled: !!userId,
     queryKey: ["getUserPlaylists", { userId }],
     queryFn: () =>
-      axios.get<YandexPlaylist[]>(`/api/getPlaylists?username=${userId}`),
-    select: (data) => data.data,
+      axios.get<GetPlaylistsResponse>(`/api/getPlaylists?username=${userId}`),
+    select: (data) => data.data.data,
     staleTime: 259200000,
   });
 

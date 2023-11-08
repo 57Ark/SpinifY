@@ -34,13 +34,13 @@ def getYandexPlaylists(username):
 
   print(os.getenv('BROWSERLESS_API_KEY'))
   
-  chrome_options = Options()
+  chrome_options = webdriver.ChromeOptions()
   chrome_options.set_capability('browserless:token', os.getenv('BROWSERLESS_API_KEY'))
   chrome_options.add_argument("--no-sandbox")
   chrome_options.add_argument("--headless")
 
   try:    
-    driver = webdriver.Chrome(
+    driver = webdriver.Remote(
         command_executor='https://chrome.browserless.io/webdriver',
         options=chrome_options
     )
