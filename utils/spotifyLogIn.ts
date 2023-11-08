@@ -10,7 +10,7 @@ export async function redirectToAuthCodeFlow() {
     const params = new URLSearchParams();
     params.append("client_id", clientId);
     params.append("response_type", "code");
-    params.append("redirect_uri", "http://localhost:3000/");
+    params.append("redirect_uri", "https://spinify.vercel.app/");
     params.append(
       "scope",
       "user-read-private user-read-email playlist-modify-private playlist-modify-public playlist-read-private playlist-read-collaborative"
@@ -48,7 +48,7 @@ export async function getAccessToken(code: string) {
   params.append("client_secret", "15366cc6bb9240b0a889b7ec1b47dac5");
   params.append("grant_type", "authorization_code");
   params.append("code", code);
-  params.append("redirect_uri", "http://localhost:3000/");
+  params.append("redirect_uri", "https://spinify.vercel.app/");
   params.append("code_verifier", verifier!);
 
   const result = await fetch("https://accounts.spotify.com/api/token", {
