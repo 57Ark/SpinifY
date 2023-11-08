@@ -1,4 +1,4 @@
-const clientId = process.env.SPOTIFY_CLIENT_ID ?? "";
+const clientId = "f7b5df82f64e43f48e7eba1e83982771";
 
 export async function redirectToAuthCodeFlow() {
   if (clientId) {
