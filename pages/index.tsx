@@ -10,10 +10,6 @@ import Header from "../components/modules/Header/Header";
 import YandexIdForm from "../components/modules/YandexIdForm/YandexIdForm";
 import { stepAtom } from "../utils/store";
 
-// arkhip.voubd
-// nika.chekina
-// v4dimgorbatov
-
 export default function Home() {
   const [currentStep, setCurrentStep] = useAtom(stepAtom);
 

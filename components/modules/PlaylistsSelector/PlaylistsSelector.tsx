@@ -65,7 +65,7 @@ export default function PlaylistsSelector() {
     queryKey: ["getUserPlaylists", { userId }],
     queryFn: () =>
       axios.get<GetPlaylistsResponse>(`/api/getPlaylists?username=${userId}`),
-    select: (data) => data.data.data,
+    select: (data) => data.data,
     staleTime: 259200000,
   });
 
